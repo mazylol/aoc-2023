@@ -3,6 +3,7 @@
 #include <map>
 #include <string>
 #include <vector>
+#include <unordered_map>
 
 std::vector<std::string> load_lines(std::string file) {
     std::ifstream f(file);
@@ -43,7 +44,7 @@ int check(const char ch) {
 }
 
 // part 2
-std::map<std::string, std::string> number_map = {
+std::unordered_map<std::string, std::string> number_map = {
     {"one", "o1e"},
     {"two", "t2o"},
     {"three", "t3e"},
