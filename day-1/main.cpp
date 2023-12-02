@@ -1,9 +1,8 @@
 #include <fstream>
 #include <iostream>
-#include <map>
 #include <string>
-#include <vector>
 #include <unordered_map>
+#include <vector>
 
 std::vector<std::string> load_lines(std::string file) {
     std::ifstream f(file);
