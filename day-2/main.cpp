@@ -3,6 +3,33 @@
 #include <string>
 #include <vector>
 
+int covert(char ch) {
+    switch (ch) {
+    case '0':
+        return 0;
+    case '1':
+        return 1;
+    case '2':
+        return 2;
+    case '3':
+        return 3;
+    case '4':
+        return 4;
+    case '5':
+        return 5;
+    case '6':
+        return 6;
+    case '7':
+        return 7;
+    case '8':
+        return 8;
+    case '9':
+        return 9;
+    default:
+        return -1;
+    }
+}
+
 std::vector<std::string> load_lines(std::string file) {
     std::ifstream f(file);
 
@@ -17,45 +44,17 @@ std::vector<std::string> load_lines(std::string file) {
 }
 
 int check(std::string line, int game_id) {
-    // split the line into parts, each part is separated by a semicolon
-    std::vector<std::string> sub_games;
-    std::string sub_game = "";
-    for (int i = 0; i < line.size(); i++) {
-        if (line[i] == ';') {
-            sub_games.push_back(sub_game);
-            sub_game = "";
-        } else {
-            sub_game += line[i];
-        }
-    }
+    line = line.erase(0, line.find(":") + 1);
 
-    // split each sub game into parts, each part is separated by a comma
     std::vector<std::string> parts;
-    for (const auto &sub_game : sub_games) {
-        std::string part = "";
-        for (int i = 0; i < sub_game.size(); i++) {
-            if (sub_game[i] == ',') {
-                parts.push_back(part);
-                part = "";
-            } else {
-                part += sub_game[i];
-            }
+    std::string part = "";
+    for (int i = 0; i < line.size(); i++) {
+        if (line[i] == ',') {
+            parts.push_back(part);
+            part = "";
+        } else {
+            part += line[i];
         }
-        parts.push_back(part);
-    }
-
-    int red = 0;
-    int green = 0;
-    int blue = 0;
-
-    for (const auto &part : parts) {
-        if (part[part.size()] == 'r') {
-
-        }
-
-        red = 0;
-        green = 0;
-        blue = 0;
     }
 
     return game_id;
